@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safe Space for Women</title>
+
+<style>
+body { font-family: Arial, sans-serif; margin: 0; background: #fafafa; }
+header { background: #ad1457; color: white; padding: 30px; text-align: center; }
+nav { background: #333; padding: 10px; text-align: center; position: sticky; top: 0; }
+nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; cursor: pointer; }
+section { background: white; margin: 20px auto; padding: 20px; max-width: 900px; border-radius: 8px; }
+button { padding: 10px 15px; margin: 5px; border: none; cursor: pointer; border-radius: 5px; }
+.panic { background: red; color: white; font-weight: bold; }
+footer { background: #333; color: white; text-align: center; padding: 15px; margin-top: 20px; }
+input, textarea { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #bbb; border-radius: 4px; font-size: 16px; }
+button.submit-btn { background: #ad1457; color: white; padding: 12px; width: 100%; }
+.hero-img { width: 100%; border-radius: 8px; margin-top: 15px; }
+.support-img { width: 100%; border-radius: 8px; margin: 15px 0; }
+
+@media (max-width: 600px) {
+  header { padding: 20px; }
+  section { margin: 10px; padding: 15px; }
+}
+</style>
+
+<script>
+function showPanic() {
+    alert(
+        "YOU ARE NOT ALONE.\n\n" +
+        "Emergency Helpline Numbers (India):\n" +
+        "Women Helpline: 181\n" +
+        "Police Emergency: 1091\n" +
+        "All Emergencies: 112\n" +
+        "NCW Helpline: 7827-170-170\n\n" +
+        "Please seek help immediately if you are in danger."
+    );
+}
+
+function toggleLanguage(lang) {
+    const elements = document.querySelectorAll("[data-en]");
+    elements.forEach(el => {
+        el.innerText = lang === "hi"
+            ? el.getAttribute("data-hi")
+            : el.getAttribute("data-en");
+    });
+}
+
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+}
+</script>
+</head>
+
+<body>
+
+<header>
+    <h1 data-en="You Are Safe Here" data-hi="यहाँ आप सुरक्षित हैं">You Are Safe Here</h1>
+    <p data-en="A space where women can speak without fear"
+       data-hi="एक ऐसा स्थान जहाँ महिलाएँ बिना डर के बोल सकें">
+       A space where women can speak without fear
+    </p>
+
+    <!-- HERO IMAGE -->
+    <img class="hero-img"
+         src="https://images.unsplash.com/photo-1607746882042-944635dfe10e"
+         alt="Support and safety">
+
+    <button onclick="toggleLanguage('en')">English</button>
+    <button onclick="toggleLanguage('hi')">हिंदी</button>
+    <button class="panic" onclick="showPanic()">PANIC</button>
+</header>
+
+<nav>
+    <a onclick="scrollToSection('home')">Home</a>
+    <a onclick="scrollToSection('about')">About</a>
+    <a onclick="scrollToSection('support')">You Are Not Alone</a>
+    <a onclick="scrollToSection('helpline')">Helpline</a>
+</nav>
+
+<section id="home">
+    <h2 data-en="Welcome" data-hi="स्वागत है">Welcome</h2>
+    <p data-en="This space was created so that no girl feels alone in sharing her problems."
+       data-hi="यह स्थान इसलिए बनाया गया है ताकि कोई लड़की अपनी समस्याएँ साझा करने में अकेली महसूस न करे।">
+       This space was created so that no girl feels alone in sharing her problems.
+    </p>
+    <p><strong>Created with care by Ashwini</strong></p>
+</section>
+
+<section id="about">
+    <h2 data-en="About This Space" data-hi="इस स्थान के बारे में">About This Space</h2>
+    <p data-en="This website is a safe starting point. You deserve safety and respect."
+       data-hi="यह वेबसाइट सुरक्षित शुरुआत है। आप सुरक्षा और सम्मान के हकदार हैं।">
+       This website is a safe starting point. You deserve safety and respect.
+    </p>
+
+    <img class="support-img"
+         src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1"
+         alt="Women support">
+</section>
+
+<section id="support">
+    <h2 data-en="You Are Not Alone" data-hi="आप अकेली नहीं हैं">You Are Not Alone</h2>
+    <ul>
+        <li>This is not your fault.</li>
+        <li>Your feelings are valid.</li>
+        <li>You deserve to feel safe.</li>
+        <li>Asking for help is brave.</li>
+    </ul>
+</section>
+
+<section id="helpline">
+    <h2 data-en="Helpline & Support" data-hi="हेल्पलाइन और समर्थन">Helpline & Support</h2>
+    <p>You can stay anonymous. Your message will reach the site owner privately.</p>
+
+    <!-- FORM WITH EMAIL NOTIFICATION -->
+    <form action="https://formspree.io/f/xpqzddey" method="POST">
+        <textarea name="message" placeholder="Share your concern" required></textarea>
+        <input type="hidden" name="_subject" value="New message from Safe Space website">
+        <button type="submit" class="submit-btn">Reach Out</button>
+    </form>
+
+    <h3>Emergency Numbers (India)</h3>
+    <ul>
+        <li>Women Helpline: 181</li>
+        <li>Police: 1091</li>
+        <li>All Emergencies: 112</li>
+        <li>NCW: 7827-170-170</li>
+    </ul>
+</section>
+
+<footer>
+    <p>Created by Ashwini | A Safe Space for Women</p>
+    <p>
+        Contact (Admin): 
+        <a href="mailto:ashwinivindravath1729@gmail.com" style="color:#fff;">
+            ashwinivindravath1729@gmail.com
+        </a>
+    </p>
+</footer>
+
+</body>
+</html>
