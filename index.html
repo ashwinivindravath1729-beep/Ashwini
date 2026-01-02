@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safe Space for Women</title>
+
+<style>
+body { font-family: Arial, sans-serif; margin: 0; background: #fafafa; }
+header { background: #ad1457; color: white; padding: 30px; text-align: center; }
+nav { background: #333; padding: 10px; text-align: center; position: sticky; top: 0; }
+nav a { color: white; margin: 10px; text-decoration: none; font-weight: bold; cursor: pointer; }
+section { background: white; margin: 20px auto; padding: 20px; max-width: 900px; border-radius: 8px; }
+button { padding: 10px 15px; margin: 5px; border: none; cursor: pointer; border-radius: 5px; }
+.submit-btn { background: #ad1457; color: white; width: 100%; font-size: 16px; }
+.panic { background: red; color: white; font-weight: bold; }
+footer { background: #333; color: white; text-align: center; padding: 15px; }
+input, textarea { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #bbb; border-radius: 4px; font-size: 15px; }
+.hero-img, .support-img { width: 100%; border-radius: 8px; margin: 15px 0; }
+
+@media (max-width: 600px) {
+  header { padding: 20px; }
+  section { margin: 10px; padding: 15px; }
+}
+</style>
+
+<script>
+function showPanic() {
+    alert(
+        "YOU ARE NOT ALONE.\n\n" +
+        "Emergency Numbers (India):\n" +
+        "Women Helpline: 181\n" +
+        "Police: 1091\n" +
+        "All Emergencies: 112\n" +
+        "NCW: 7827-170-170"
+    );
+}
+
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+}
+
+/* LANGUAGE TOGGLE */
+function toggleLanguage(lang) {
+    const elements = document.querySelectorAll("[data-en]");
+    elements.forEach(el => {
+        el.innerText =
+            lang === "hi" ? el.getAttribute("data-hi") :
+            lang === "te" ? el.getAttribute("data-te") :
+            el.getAttribute("data-en");
+    });
+}
+
+/* ANONYMOUS TOGGLE */
+function toggleAnonymous(cb) {
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+
+    if (cb.checked) {
+        name.value = "Anonymous";
+        email.value = "anonymous@noemail.com";
+        name.disabled = true;
+        email.disabled = true;
+    } else {
+        name.value = "";
+        email.value = "";
+        name.disabled = false;
+        email.disabled = false;
+    }
+}
+
+/* WHATSAPP ALERT */
+function sendWhatsAppAlert() {
+    const phone = "8074584011";  
+    const msg = "New message received from Safe Space for Women website.";
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, "_blank");
+}
+</script>
+</head>
+
+<body>
+
+<header>
+    <h1 data-en="You Are Safe Here"
+        data-hi="यहाँ आप सुरक्षित हैं"
+        data-te="ఇక్కడ మీరు సురక్షితంగా ఉన్నారు">
+        You Are Safe Here
+    </h1>
+
+    <p data-en="A space where women can speak without fear"
+       data-hi="एक ऐसा स्थान जहाँ महिलाएँ बिना डर के बोल सकें"
+       data-te="మహిళలు భయంలేకుండా మాట్లాడగలిగే స్థలం">
+       A space where women can speak without fear
+    </p>
+
+    <img class="hero-img"
+         src="https://images.unsplash.com/photo-1607746882042-944635dfe10e">
+
+    <button onclick="toggleLanguage('en')">English</button>
+    <button onclick="toggleLanguage('hi')">हिंदी</button>
+    <button onclick="toggleLanguage('te')">తెలుగు</button>
+    <button class="panic" onclick="showPanic()">PANIC</button>
+</header>
+
+<nav>
+    <a onclick="scrollToSection('home')">Home</a>
+    <a onclick="scrollToSection('about')">About</a>
+    <a onclick="scrollToSection('support')">Support</a>
+    <a onclick="scrollToSection('helpline')">Helpline</a>
+</nav>
+
+<section id="home">
+    <h2>Welcome</h2>
+    <p>This platform was created so no woman feels alone.</p>
+    <p><strong>Created by Ashwini</strong></p>
+</section>
+
+<section id="about">
+    <h2>About This Space</h2>
+    <p>You deserve safety, dignity, and respect.</p>
+    <img class="support-img"
+         src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1">
+</section>
+
+<section id="support">
+    <h2>You Are Not Alone</h2>
+    <ul>
+        <li>This is not your fault.</li>
+        <li>Your feelings are valid.</li>
+        <li>Asking for help is brave.</li>
+    </ul>
+</section>
+
+<section id="helpline">
+    <h2 data-en="Helpline & Support"
+        data-hi="हेल्पलाइन और समर्थन"
+        data-te="హెల్ప్‌లైన్ & సహాయం">
+        Helpline & Support
+    </h2>
+
+    <form action="https://formspree.io/f/xpqzddey"
+          method="POST"
+          onsubmit="sendWhatsAppAlert()">
+
+        <input type="text" id="name" name="name" placeholder="Your Name">
+        <input type="email" id="email" name="email" placeholder="Your Email">
+        <input type="text" name="address" placeholder="City / Address (Optional)">
+
+        <label>
+            <input type="checkbox" onclick="toggleAnonymous(this)">
+            <span data-en="Send anonymously"
+                  data-hi="गुमनाम भेजें"
+                  data-te="గోప్యంగా పంపండి">
+                  Send anonymously
+            </span>
+        </label>
+
+        <textarea name="message" placeholder="Write your message" required></textarea>
+
+        <input type="hidden" name="_subject" value="New Safe Space Message">
+        <input type="hidden" name="_autoresponse"
+               value="Thank you for contacting us. Your message has been received. You are not alone.">
+
+        <button type="submit" class="submit-btn">Reach Out</button>
+    </form>
+
+    <h3>Emergency Numbers (India)</h3>
+    <ul>
+        <li>Women Helpline: 181</li>
+        <li>Police: 1091</li>
+        <li>All Emergencies: 112</li>
+        <li>NCW: 7827-170-170</li>
+    </ul>
+</section>
+
+<footer>
+    <p>Created by Ashwini | Safe Space for Women</p>
+    <p>Contact: ashwinivindravath1729@gmail.com</p>
+</footer>
+
+</body>
+</html>
